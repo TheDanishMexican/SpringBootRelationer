@@ -1,23 +1,31 @@
 package kea.projects.springbootrelationer;
 
+import kea.projects.springbootrelationer.models.Order;
 import kea.projects.springbootrelationer.models.OrderLine;
 import kea.projects.springbootrelationer.models.Product;
 import kea.projects.springbootrelationer.repositories.OrderLineRepository;
+import kea.projects.springbootrelationer.repositories.OrderRepository;
 import kea.projects.springbootrelationer.repositories.ProductRepository;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Component
 public class DataInitializer implements CommandLineRunner {
 
     private ProductRepository productRepository;
     private OrderLineRepository orderLineRepository;
+    private OrderRepository orderRepository;
 
-    public DataInitializer(ProductRepository productRepository, OrderLineRepository orderLineRepository) {
+    public DataInitializer(ProductRepository productRepository, OrderLineRepository orderLineRepository,
+                           OrderRepository orderRepository) {
         this.productRepository = productRepository;
         this.orderLineRepository = orderLineRepository;
+        this.orderRepository = orderRepository;
     }
 
     public void run(String...args) {
@@ -44,5 +52,9 @@ public class DataInitializer implements CommandLineRunner {
         orderLineRepository.save(line5);
         orderLineRepository.save(line6);
         orderLineRepository.save(line7);
+
+        Order order1 = new Order(LocalDate.now(), true, List.of(line1, line2, line3));
+
+        orderRepository.save(order1);
     }
 }
