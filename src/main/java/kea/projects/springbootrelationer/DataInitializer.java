@@ -6,8 +6,6 @@ import kea.projects.springbootrelationer.models.Product;
 import kea.projects.springbootrelationer.repositories.OrderLineRepository;
 import kea.projects.springbootrelationer.repositories.OrderRepository;
 import kea.projects.springbootrelationer.repositories.ProductRepository;
-import org.aspectj.weaver.ast.Or;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -44,14 +42,6 @@ public class DataInitializer implements CommandLineRunner {
         OrderLine line5 = new OrderLine(meat, 56);
         OrderLine line6 = new OrderLine(meat, 56);
         OrderLine line7 = new OrderLine(meat, 56);
-
-        orderLineRepository.save(line1);
-        orderLineRepository.save(line2);
-        orderLineRepository.save(line3);
-        orderLineRepository.save(line4);
-        orderLineRepository.save(line5);
-        orderLineRepository.save(line6);
-        orderLineRepository.save(line7);
 
         Order order1 = new Order(LocalDate.now(), true, List.of(line1, line2, line3));
 
