@@ -33,10 +33,16 @@ public class DataInitializer implements CommandLineRunner {
         OrderLine line2 = new OrderLine(tomat, 25);
         OrderLine line3 = new OrderLine(meat, 56);
         OrderLine line4 = new OrderLine(meat, 56);
+        OrderLine line5 = new OrderLine(meat, 56);
+        OrderLine line6 = new OrderLine(meat, 56);
+        OrderLine line7 = new OrderLine(meat, 56);
 
         orderLineRepository.save(line1);
         orderLineRepository.save(line2);
         orderLineRepository.save(line3);
         orderLineRepository.save(line4);
+        orderLineRepository.save(line5);
+        orderLineRepository.save(line6);
+        orderLineRepository.save(line7);
     }
 }

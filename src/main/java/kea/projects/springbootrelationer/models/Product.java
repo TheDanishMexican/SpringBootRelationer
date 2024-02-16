@@ -1,5 +1,6 @@
 package kea.projects.springbootrelationer.models;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -9,6 +10,7 @@ import jakarta.persistence.Id;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @JsonValue
     private int id;
     private String name;
     private String description;
@@ -55,5 +57,13 @@ public class Product {
 
     public void setEAN13(String EAN13) {
         this.EAN13 = EAN13;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }
